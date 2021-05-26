@@ -1,0 +1,130 @@
+body {
+	margin: 1px;
+	background: silver;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-areas:
+		"header header header header header"
+		"article main main main spacer"
+		"article main main main spacer"
+		"article main main main spacer"
+		"footer footer footer footer footer";
+	grid-template-columns: 10% auto auto auto 10%;
+	grid-template-rows: 12% auto auto auto 10%;
+	grid-gap: 0;
+}
+.spacer {
+	grid-area: spacer;
+	background-color: silver;
+}
+.hBanner {
+	font-size: 5vw;
+	grid-area: header;
+	text-align: center;
+	background-color: silver;
+	color: white;
+	text-shadow: 1px 1px black;
+}
+.aHead {
+	grid-area: article;
+	background-color: silver;
+	height: 100%;
+}
+	.aHead nav{
+		color: white;
+		overflow: hidden;
+		-webkit-transition: width .05s linear;
+		transition: width .05s linear;
+		transform: translateZ(0) scale(1,1);
+		-webkit-transform: translateZ(0) scale(1,1);
+		z-index: 1000;
+	}
+		.aHead nav ul {
+			margin: 0;
+			padding-left: 0;
+		}
+		.aHead nav li {
+			list-style: none;
+			list-style-position: inside;
+			padding: 5px;
+			text-align: center;
+			font-size: 5vw;
+		}
+			.aHead nav li a {
+				color: white;
+				text-shadow: 1px 1px black;
+				text-decoration: none;
+			}
+					.aHead nav li a:hover {
+						color: aqua;
+					}
+.mBody {
+	grid-area: main;
+	text-align: center;
+	background-color: silver;
+	color: white;
+}
+	.mBody iframe {
+		background-image: url(images/Fist.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		border: none;
+		position: relative;
+		top: 0;
+		bottom: 0;
+		margin: 0;
+		width: 100%;
+		height: 300px;
+		padding: 1px;
+	}
+.updates {
+	background-color: silver;
+	grid-area: footer;
+	overflow: hidden;
+	white-space: nowrap;
+}
+	.updates p {
+		background: red;
+		background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+		background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+		background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+		background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		filter: drop-shadow(1px 1px black);
+		-webkit-filter: drop-shadow(1px 1px black);
+		font-size: 3vw;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		line-height: 1;
+		text-align: center;
+		-moz-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		-moz-animation: scroll-left 20s linear infinite;
+		-webkit-animation: scroll-left 20s linear infinite;
+		animation: scroll-left 20s linear infinite;
+	}
+	@-moz-keyframes scroll-left {
+		0%	{ -moz-transform: translateX(100%); }
+		100%	{ -moz-transform: translateX(-131%); }
+	}
+	@-webkit-keyframes scroll-left {
+		0%	{ -webkit-transform: translateX(100%); }
+		100%	{ -webkit-transform: translateX(-131%); }
+	}
+	@keyframes scroll-left {
+		0%	 { -moz-transform: translateX(100%); 
+			   -webkit-transform: translateX(100%);
+			   transform: translateX(100%);
+			 }
+		100% { -moz-transform: translateX(-131%);
+			   -webkit-transform: translateX(-131%);
+			   transform: translateX(-131%);
+			  }
+	}

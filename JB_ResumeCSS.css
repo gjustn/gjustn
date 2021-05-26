@@ -1,0 +1,113 @@
+body {
+    background-color: silver;
+}
+h2 {
+    font-size: 16px;
+}
+td {
+    text-align: center;
+    font-style: italic;
+}
+header {
+    display: flex;
+    flex-flow: row;
+    border-bottom: 5px double red;
+}
+    header H1 {
+        width: 50%;
+        font-size: 21px;
+    }
+        header p {
+            flex-wrap: nowrap;
+            width: 50%;
+            text-align: right;
+            font-size: 10px;
+        } 
+.C_F, .C_Q, .Edu, .Wurk {
+    border-bottom: 1px solid white;
+}
+.Acco {
+    border-bottom: 5px double blue;
+}
+        .C_F p {
+        font-size: 13px;
+        }
+        .C_Q table, .Edu table, .Wurk table, .Acco table {
+            text-align: left;
+            width: 100%;
+        }
+            .C_Q tr, .Edu tr, .Wurk tr, .Acco tr {
+               width: 100%;
+            }
+                .C_Q th, .Edu th, .Wurk th, .Acco th {
+                    width: 48%;
+                }
+                    .C_Q tr > th:nth-of-type(2), .Edu tr > th:nth-of-type(2), .Wurk tr > th:nth-of-type(2), .Acco tr > th:nth-of-type(2) {
+                        text-align: right;
+                    }
+                    .detail {
+                        position: relative;
+                        display: inline-block;
+                        width: auto;
+                        padding: 5px;
+                    }
+                        .detail h5 {
+                            margin: 0;
+                        }
+                            .details {
+                                visibility: hidden;
+                                width: 100%;
+                                background-color: lightsteelblue;
+                                color: black;
+                                padding: 5px 0;
+                                border-radius: 6px;
+                                position: absolute;
+                                z-index: 1;
+                                left: 0;
+                            }
+                                .details table {
+                                    padding: 0;
+                                    text-align: center;
+                                }
+                                    .details th {
+                                        font-size: 12px;
+                                        box-shadow: 2px 1px 1px black;
+                                        width: auto; 
+                                    }
+                                        .details td {
+                                            font-size: 10px;
+                                            font-style: italic;
+                                            box-shadow: 2px 1px 1px lightslategray;
+                                            width: auto;
+                                        }
+                                            .detail:hover .details {
+                                                visibility: visible;
+                                            }
+
+                                            .Exmpl, .Show {
+                                                display: flex;
+                                                margin-top: 5px;
+                                                width: 100%;
+                                                justify-content: space-evenly;
+                                            }
+                                                .Exmpl button {
+                                                    border-radius: 50%;
+                                                }
+                                                    .Exmpl img {
+                                                    padding: 10px;
+                                                    width: 50px;
+                                                    height: 50px;
+                                                    }
+                                                        .B1 {
+                                                            background: radial-gradient(gold, black);
+                                                        }
+                                                        .B2 {
+                                                            background: radial-gradient(silver, black);
+                                                        }
+                                                        .B3 {
+                                                            background: radial-gradient(green, black);
+                                                        }
+                                            .Show iframe {
+                                                width: 100%;
+                                                height: 400px;
+                                            }
