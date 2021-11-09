@@ -90,7 +90,7 @@ header {
                width: 100%;
             }
                 .C_Q th, .Edu th, .Wurk th, .Acco th {
-                    width: 48%;
+                    width: 100%;
                 }
                     .C_Q tr > th:nth-of-type(2), .Edu tr > th:nth-of-type(2), .Wurk tr > th:nth-of-type(2), .Acco tr > th:nth-of-type(2) {
                         text-align: right;
@@ -167,6 +167,7 @@ header {
                                             }
                                             .view_it img {
                                                 margin: 20px;
+                                                height: 100px;
                                                 transition: transform 0.25s ease;
                                                 cursor: zoom-in;
                                             }
