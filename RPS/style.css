@@ -8,8 +8,7 @@
 }
 
 body {
-  background-color: #444;
-  height: 300px;
+  height: auto;
 }
 
 .score-board {
@@ -29,21 +28,21 @@ body {
 .badge {
   background: #E2584D;
   color: white;
-  font-size: 5px;
+  font-size: 3vw;
   padding: 2px 5px;
   font-family: Asap, sans-serif;
 }
 
 #user-label {
   position: absolute;
-  top: 7px;
-  left: -10px;
+  top: center;
+  left: -80%;
 }
 
 #computer-label {
   position: absolute;
-  top: 7px;
-  right: -10px;
+  top: center;
+  right: -80%;
 }
 
 .result {
