@@ -17,6 +17,7 @@
 
 body {
   height: auto;
+  font-family: "PressStart2P", sans-serif;
 }
 
 .score-board {
@@ -34,43 +35,39 @@ body {
   color: white;
   padding: 3px 8px;
   white-space: nowrap;
-  font-family: "PressStart2P", sans-serif;
   font-size: 4vw;
   position: relative;
 }
 
 .badge {
   color: white;
-  font-size: 3vw;
-  padding: 2px 5px;
-  font-family: Asap, sans-serif;
+  font-size: 5vw;
+}
+
+#user-label,
+#computer-label {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  line-height: 1;
 }
 
 #user-label {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -30%;
+  left: -40px;
 }
 
 #computer-label {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -30%;
+  right: -40px;
 }
 
 .result {
+  padding-top: 5px;
+  text-align: center;
+  font-weight: bold;
   font-size: 5vw;
-  font-family: "PressStart2P", sans-serif;
   color: white;
 }
 
-.result > p {
-  text-align: center;
-  font-weight: bold;
-  font-family: "PressStart2P", sans-serif;
-}
 
 .choices {
   margin-top: 10px;
@@ -96,7 +93,6 @@ body {
 #action-message {
   text-align: center;
   color: white;
-  font-family: "PressStart2P", sans-serif;
   font-weight: bold;
   font-size: 6vw;
   margin-top: 5px;
