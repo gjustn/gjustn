@@ -80,14 +80,6 @@ header p {
     flex-wrap: nowrap;
 }
 
-.text_capsule {
-    font-size: 2em;
-}
-
-.main_text {
-    font-size: 1em;
-}
-
 @keyframes rainbow-text-simple-animation-rev {
     0% {
         background-size: 650%;
