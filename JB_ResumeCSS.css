@@ -7,8 +7,7 @@ html, body {
 }
 @font-face {
     font-family: "PressStart2P";
-    src: url("Assets/Fonts/PressStart2P-Regular.woff2") format("woff2"),
-         url("Assets/Fonts/PressStart2P-Regular.woff") format("woff");
+    src: url("/Assets/Fonts/PressStart2P.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -23,6 +22,9 @@ body {
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 header {
@@ -30,25 +32,6 @@ header {
     flex-flow: row;
     width: 100%;
     font-family: "PressStart2P", sans-serif;
-}
-
-header a {
-    text-decoration: none;
-    color: #B603ED;
-}
-
-header h3 {
-    width: auto;
-    margin-left: auto;
-    padding-right: 20px;
-    flex-wrap: nowrap;
-    line-height: 1.5;
-    text-align: right;
-}
-
-.title {
-    width: 68%;
-    text-align: left;
     background-color: #CA4246;
     background-image: linear-gradient(
         45deg,
@@ -70,12 +53,37 @@ header h3 {
     animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
 }
 
-.title:hover {
+header:hover {
     animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+header a {
+    text-decoration: none;
+    color: #B603ED;
+}
+
+header p {
+    width: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    flex-wrap: nowrap;
+    line-height: 1.5;
+    text-align: right;
+}
+
+.title {
+    width: 50%;
+    margin-left: 0;
+    padding-left: 20px;
+    text-align: left;
 }
 
 .text_capsule {
     font-size: 2em;
+}
+
+.main_text {
+    font-size: 1em;
 }
 
 @keyframes rainbow-text-simple-animation-rev {
@@ -102,7 +110,7 @@ header h3 {
     }
 }
 
-.Exmpl, .Show {
+.Exmpl {
     display: flex;
     margin-top: 5px;
     width: 100%;
@@ -131,7 +139,13 @@ header h3 {
     background: radial-gradient(green, black);
 }
 
+.Show {
+    flex: 1;
+    width: 100%;
+}
+
 .Show iframe {
     width: 100%;
-    height: 400px;
+    height: 100%;
+    border: none;
 }
