@@ -53,11 +53,11 @@ body {
 }
 
 #user-label {
-  left: -40px;
+  left: -50%;
 }
 
 #computer-label {
-  right: -40px;
+  right: -50%;
 }
 
 .result {
