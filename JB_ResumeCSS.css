@@ -1,11 +1,21 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
 body {
     color: #fff;
+    background-color: #000;
     background-image: url("Images/Try.jpg");
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center center;
     background-size: cover;
-    height: 100;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
+
 h2 {
     font-size: 16px;
 }
@@ -22,7 +32,7 @@ header {
         text-decoration: none;
         color: #B603ED;
     }
-        .myName {
+        .title {
             width: 68%;
             text-align: left;
             background-color: #CA4246;
@@ -40,11 +50,12 @@ header {
                 #476098 30%);
             background-size: 100%;
             background-repeat: repeat;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
         }
-            .myName:hover {
+            .title:hover {
                 animation: rainbow-text-simple-animation 0.5s ease-in forwards;
             }
             @keyframes rainbow-text-simple-animation-rev {
