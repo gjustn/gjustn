@@ -32,11 +32,11 @@ function createParticles(animationType) {
     
     particle.style.setProperty('--tx', tx + 'px');
     particle.style.setProperty('--ty', ty + 'px');
-    particle.style.animation = `${animationType} 1.0s ease-out forwards`;
+    particle.style.animation = `${animationType} 2.0s ease-out forwards`;
     
     document.body.appendChild(particle);
     
-    setTimeout(() => particle.remove(), 800);
+    setTimeout(() => particle.remove(), 2000);
   }
 }
 
@@ -44,14 +44,29 @@ function updateScoreBoard() {
   if (userScore >= 99 || computerScore >= 99) {
     if (userScore >= 99) {
       createParticles('fireworks');
+      setTimeout(() => {
+        result_p.innerHTML = "You Win!";
+        setTimeout(() => {
+          userScore = 0;
+          computerScore = 0;
+          updateScoreBoard();
+        }, 1000);
+      }, 2000);
     } else if (computerScore >= 99) {
       createParticles('explosion');
+      setTimeout(() => {
+        result_p.innerHTML = "You Lose!";
+        setTimeout(() => {
+          userScore = 0;
+          computerScore = 0;
+          updateScoreBoard();
+        }, 1000);
+      }, 2000);
     }
-    userScore = 0;
-    computerScore = 0;
+  } else {
+    userScore_span.textContent = formatScore(userScore);
+    computerScore_span.textContent = formatScore(computerScore);
   }
-  userScore_span.textContent = formatScore(userScore);
-  computerScore_span.textContent = formatScore(computerScore);
 }
 
 function getComputerChoice() {
@@ -61,16 +76,18 @@ function getComputerChoice() {
 }
 
 function convertToWord(letter) {
-  if (letter === 'r') return 'Rock';
-  if (letter === 'p') return 'Paper';
-  return 'Scissors';
+  if (letter === 'r') return '✊🏾';
+  if (letter === 'p') return '🤚🏾';
+  return '✌🏾';
 }
 
 function win(userChoice, computerChoice) {
   const userChoice_div = document.getElementById(userChoice);
   userScore++;
   updateScoreBoard();
-  result_p.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(computerChoice)}. You Win!`;
+  if (userScore < 99) {
+    result_p.innerHTML = `${convertToWord(userChoice)} beats ${convertToWord(computerChoice)}<br>You Win!`;
+  }
   userChoice_div.classList.add('green-glow');
   setTimeout(() => userChoice_div.classList.remove('green-glow'), 300);
 }
@@ -79,14 +96,16 @@ function lose(userChoice, computerChoice) {
   const userChoice_div = document.getElementById(userChoice);
   computerScore++;
   updateScoreBoard();
-  result_p.innerHTML = `${convertToWord(userChoice)} loses to ${convertToWord(computerChoice)}. You lost...`;
+  if (computerScore < 99) {
+    result_p.innerHTML = `${convertToWord(userChoice)} loses to ${convertToWord(computerChoice)}<br>Bots point!`;
+  }
   userChoice_div.classList.add('red-glow');
   setTimeout(() => userChoice_div.classList.remove('red-glow'), 300);
 }
 
 function draw(userChoice, computerChoice) {
   const userChoice_div = document.getElementById(userChoice);
-  result_p.innerHTML = `${convertToWord(userChoice)} equals ${convertToWord(computerChoice)}. It is a draw`;
+  result_p.innerHTML = `${convertToWord(userChoice)} equals ${convertToWord(computerChoice)}<br>Draw!`;
   userChoice_div.classList.add('gray-glow');
   setTimeout(() => userChoice_div.classList.remove('gray-glow'), 300);
 }
