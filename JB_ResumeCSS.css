@@ -60,6 +60,7 @@ header:hover {
 header a {
     text-decoration: none;
     color: #B603ED;
+    flex-wrap: nowrap;
 }
 
 header p {
