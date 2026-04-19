@@ -13,13 +13,20 @@ html, body {
     font-display: swap;
 }
 
+:root {
+    --pos-a: 0% 0%;
+    --pos-b: 25% 0%;
+    --pos-c: 50% 0%;
+    --pos-d: 75% 0%;
+}
+
 body {
     color: #fff;
     background-color: #000;
-    background-image: url("Assets/Images/Try.jpg");
+    background-image: url("Assets/Images/background_web.png");
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-position: var(--pos-a);
+    background-size: auto 115vh;
     background-attachment: fixed;
     min-height: 100vh;
     display: flex;

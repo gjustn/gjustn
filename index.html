@@ -9,25 +9,43 @@
  
 <body>
     <header>
-        <p class="title">[ G • J • T]</>
+        <p class="title">║ G • J • T ║</p>
         <p>02895<br>
-            <a href="tel:401-519-8804"><img src="Assets/Images/icons/phone.png" alt="cell phone" width="25" height="auto"></a>
-            <a href="mailto:JBache@gjunction.onmicrosoft.com"><img src="Assets/Images/icons/email.png" alt="email" width="25" height="auto"></a>
-            <a href="https://www.linkedin.com/in/justin-bache-Gjunction" target="_blank"><img src="Assets/Images/icons/linkedin.webp" alt="linkedin icon" width="25" height="auto"></a>
+            <a href="tel:401-519-8804">
+                <img src="Assets/Images/icons/phone.png" alt="cell phone" width="25" height="auto">
+            </a>
+            <a href="mailto:JBache@gjunction.onmicrosoft.com">
+                <img src="Assets/Images/icons/email.png" alt="email" width="25" height="auto">
+            </a>
+            <a href="https://www.linkedin.com/in/justin-bache-Gjunction" target="_blank">
+                <img src="Assets/Images/icons/linkedin.webp" alt="linkedin icon" width="25" height="auto">
+            </a>
         </p>
     </header>
 
   
     <div class="Exmpl">
-        <button type="button" class="B2"><a href="RPS/index.html" target="rFrame"><img src="Assets/Images/icons/Fist.png"/></a></button>
+        <button type="button" class="B1" onclick="loadGame_01()">
+            <img src="Assets/Images/icons/Sword_Shield.png" alt="A"/>
+        </button>
+        <button type="button" class="B2">
+            <a href="RPS/index.html" target="rFrame">
+                <img src="Assets/Images/icons/Fist.png" alt="B"/>
+            </a>
+        </button>
+        <button type="button" class="B3" onclick="loadGame_02()">
+            <img src="Assets/Images/icons/para.png" alt="C"/>
+        </button>
     </div>
 
     <div class="Show">
-        <iframe name="rFrame" frameborder="0" allowfullscreen></iframe>
+        <iframe id="game-loader" name="rFrame" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <footer>
         <a href="#">Guided Junction Technologies LLC.</a>
     </footer>
+
+    <script src="loadGame.js"></script>
 </body>
 </html>
