@@ -141,14 +141,19 @@ header p {
 }
 
 .Show {
-    flex: 1;
+    flex: 1; 
     width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
 }
 
 .Show iframe {
-    width: 100%;
+    min-width: 100%;
+    width: 1px;
     height: 100%;
     border: none;
+    display: block;
 }
 
 footer a {
@@ -157,4 +162,22 @@ footer a {
     color: #fff;
     text-shadow: 2px 2px 2px #000;
     font-family: "PressStart2P", sans-serif;
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    header p, .title {
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        margin: 0;
+    }
+    .Exmpl img {
+        width: 25px;
+        height: 25px;
+    }
 }
