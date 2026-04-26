@@ -23,7 +23,7 @@ body { padding: 0; margin: 0 }
 .unity-mobile #unity-footer { 
     display: block !important; 
     position: absolute; 
-    bottom: 0; 
+    bottom: 5%; 
     width: 100%;
 }
 
