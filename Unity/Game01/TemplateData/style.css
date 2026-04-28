@@ -17,6 +17,7 @@ body { padding: 0; margin: 0 }
 #unity-footer { 
     position: relative;
     display: none;
+    bottom: 10%;
 }
 
 #unity-logo-title-footer { float:left; width: 102px; height: auto; background: url('unity-logo-title-footer.png') no-repeat center }
