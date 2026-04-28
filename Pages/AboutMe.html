@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>About Me</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+ 
+<body class="Pages AboutMe">
+    <header>
+        <h3><u>ABOUT THE FOUNDER</u></h3>
+    </header>
+
+    <div id="Intro"></div>
+    <div id="WhatIDo"></div>
+    <div id="HowIGotHere"></div>
+    <div id="MyProcess"></div>
+    <div id="WhatIAmDoing"></div>
+    <div id="Hobbies"></div>
+  
+    <script>
+        async function renderMarkdown(file, elementId) {
+            const container = document.getElementById(elementId);
+            try {
+                const response = await fetch(`../Assets/Docs/${file}`);
+                if (!response.ok) throw new Error(`Failed to load ${file}`);
+                
+                const mdText = await response.text();
+                container.innerHTML = marked.parse(mdText);
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = "<p>Content currently unavailable.</p>";
+            }
+        }
+
+        renderMarkdown('Intro.md', 'Intro');
+        renderMarkdown('WhatIAmDoing.md', 'WhatIAmDoing');
+        renderMarkdown('HowIGotHere.md', 'HowIGotHere');
+        renderMarkdown('MyProcess.md', 'MyProcess');
+        renderMarkdown('WhatIAmDoing.md', 'WhatIAmDoing');
+        renderMarkdown('Hobbies.md', 'Hobbies');
+
+    </script>
+</body>
+</html>

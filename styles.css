@@ -13,28 +13,36 @@ html, body {
     font-display: swap;
 }
 
-:root {
-    --pos-a: 0% 0%;
-    --pos-b: 25% 0%;
-    --pos-c: 50% 0%;
-    --pos-d: 75% 0%;
-}
-
 body {
     color: #fff;
     background-color: #000;
-    background-image: url("Assets/Images/background_web.png");
+    background-image: url("Assets/Images/background_web_02.png");
     background-repeat: no-repeat;
-    background-position: var(--pos-a);
-    background-size: auto 115vh;
-    background-attachment: fixed;
-    min-height: 100vh;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-header {
+.Pages {
+    font-family: "PressStart2P";
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0);
+    overflow: visible;
+    margin-left: 10px;
+    width: 98%;
+}
+.Pages header h3 {
+    color: #d1d1d1;
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.AboutMe p{
+    margin-left: 10px;
+}
+
+.Index header {
     display: flex;
     flex-flow: row;
     width: 100%;
@@ -60,17 +68,20 @@ header {
     animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
 }
 
-header:hover {
+.Index header:hover {
     animation: rainbow-text-simple-animation 0.5s ease-in forwards;
 }
 
-header a {
+.Index header a {
     text-decoration: none;
     color: #B603ED;
     flex-wrap: nowrap;
 }
+.Index header a img {
+    border-radius: 50%;
+}
 
-header p {
+.Index header p {
     width: auto;
     margin-left: auto;
     padding-right: 20px;
@@ -79,7 +90,7 @@ header p {
     text-align: right;
 }
 
-.title {
+.Index .title {
     width: 50%;
     margin-left: 0;
     padding-left: 5px;
