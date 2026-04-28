@@ -20,12 +20,6 @@ body { padding: 0; margin: 0 }
     position: relative;
     display: none;
 }
-.unity-mobile #unity-footer { 
-    display: block !important; 
-    position: absolute; 
-    bottom: 15%; 
-    width: 100%;
-}
 
 #unity-logo-title-footer { float:left; width: 102px; height: auto; background: url('unity-logo-title-footer.png') no-repeat center }
 #unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
