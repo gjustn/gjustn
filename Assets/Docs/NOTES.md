@@ -13,6 +13,7 @@
             () A new random puzzle piece is awarded at the completion of each round
             () When a full puzzle is completed, the associqted scripture is unlocked and displayed
             () Each puzzle is 9 pieces
+
             () Callback animation::
                 <1>
     *} Timer
@@ -34,3 +35,8 @@
     *} About Me
     *} About GJT.llc
 
+
+
+Puzzles:
+    ({BLENDER}) Generate 5 templates with different interlocking tab and blank orientations
+    () 
