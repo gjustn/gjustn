@@ -14,9 +14,9 @@ html, body {
 }
 
 body {
-    color: #fff;
+    color: #000;
     background-color: #000;
-    background-image: url("Assets/Images/background_web_02.png");
+ /* background-image: url("Assets/Images/background_web_02.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
