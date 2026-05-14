@@ -3,7 +3,9 @@
 <!--	* This document is used as the content for `#Intro` section of `AboutMe.html`	-->
 
 <p>
-<b>I’m Justin Allan Bache — Founder, Developer, and IT Director focused on building technology that feels effortless. I take on projects that challenge me to learn, aiming to solve real problems while helping those around me grow.</b>
+<b>Hello! I’m Justin Allan Bache!</b>
 <br><br>
-​At my core, I prioritize my faith in God and strive to follow the teachings of Jesus Christ in my daily life. This grounding keeps me focused on what matters most. While I’m naturally introverted, I’m not afraid to lead when it counts—and I’m known for bringing a healthy dose of competitive energy to family game nights.
+I am the <b>Founder</b>, <b>Developer</b>, and <b>IT Director</b> of <b>Guided Junction Technologies LLC</b>. With a multi-disciplinary background in software engineering and infrastructure management, I specialize in building high-performance, modular applications for mobile and WebGL platforms. My technical expertise centers on the <b>Unity</b> engine, <b>Blender</b>, and <b>C#</b> architectural patterns,</b> with a particular focus on creating accessible and visually engaging digital experiences.
+<br><br>
+Throughout my career, I have balanced technical innovation with rigorous systems administration. From managing <b>Linux</b>-based network infrastructures to deploying local <b>AI</b>-integrated workflows, I prioritize efficiency, visual clarity, and cross-platform compatibility.
 </p>
