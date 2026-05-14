@@ -38,9 +38,22 @@ body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.AboutMe p{
+.AboutMe p {
     margin-left: 10px;
     color: #fff;
+    line-height: 1.5;
+}
+.AboutMe p b {
+    font-weight: normal;
+    color: #e7fa79
+}
+.AboutMe ul {
+    color: #00a9dd;
+    line-height: 1.4;
+    font-size: 0.8em;
+}
+.AboutMe li::marker {
+    color: #0077e7;
 }
 
 .Index header {
