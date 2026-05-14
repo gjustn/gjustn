@@ -1,4 +1,4 @@
-<b style="color: #363636;">[WHAT I DO]</b>
+<b style="color: gold;">[WHAT I DO]</b>
 
 <!--	* This document is used as the content for `#WhatIDo` section of `AboutMe.html`	-->
 
