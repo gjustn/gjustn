@@ -148,17 +148,40 @@ body {
 }
 
 .Exmpl img {
-    padding: 5px;
     width: 50px;
     height: 50px;
 }
 
 .B1 {
-    background: radial-gradient(gold, black);
+    width: 90px;
+    height: 90px;
+    background-image: url('Assets/Images/Button_003_Waxed.png');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
 }
 
 .B2 {
-    background: radial-gradient(silver, black);
+    width: 90px;
+    height: 90px;
+    background-image: url('Assets/Images/Button_001_Waxed.png');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
 }
 
 .B3 {
@@ -167,7 +190,7 @@ body {
 
 .Show {
     flex: 1; 
-    width: 100%;
+    width: auto;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -212,4 +235,16 @@ footer a {
         width: 50px;
         height: 50px;
     }
+}
+
+.guild-board {
+    border: 30px solid transparent;
+    border-image-source: url('Assets/Images/Border_001_board.png');
+    border-image-slice: 15;
+    border-image-repeat: round;
+    background-image: url(Assets/Images/Background_001_Panels-wood.png);
+    background-repeat: no-repeat;
+    background-origin: padding-box;
+    background-clip: padding-box;
+    background-size: 100% 100%;
 }
