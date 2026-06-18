@@ -186,6 +186,7 @@ body {
 
 .B3 {
     background: radial-gradient(green, black);
+    width: 25%;
 }
 
 .Show {
@@ -242,9 +243,180 @@ footer a {
     border-image-source: url('Assets/Images/Border_001_board.png');
     border-image-slice: 15;
     border-image-repeat: round;
-    background-image: url(Assets/Images/Background_001_Panels-wood.png);
+    background-image: url('Assets/Images/Background_001_Panels-wood.png');
     background-repeat: no-repeat;
     background-origin: padding-box;
     background-clip: padding-box;
     background-size: 100% 100%;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+.auth-container input {
+    padding: 10px;
+    font-family: "PressStart2P", sans-serif;
+    font-size: 0.6em;
+    border: 2px solid #00a9dd;
+    background-color: #151a2f;
+    color: #fff;
+}
+
+.auth-container input:focus {
+    outline: none;
+    border-color: #e7fa79;
+}
+
+.btn-sign-in {
+    font-family: "PressStart2P", sans-serif;
+    font-size: 0.7em;
+    color: #fff;
+    padding: 12px;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+}
+
+.page-view-hidden {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#view-success p {
+    color: #e7fa79;
+    font-family: 'PressStart2P', sans-serif;
+    font-size: 0.6em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #151a2f;
+    border: 4px solid #CA4246;
+    padding: 20px;
+    text-align: center;
+    max-width: 80%;
+}
+
+.modal-box p {
+    font-family: 'PressStart2P', sans-serif;
+    font-size: 0.55em;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-box button {
+    font-family: 'PressStart2P', sans-serif;
+    font-size: 0.6em;
+    padding: 8px 16px;
+    background: #CA4246;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.directory-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.dir-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dir-icon {
+    width: 48px;
+    height: 48px;
+    background-image: url('Assets/Images/icons/Folder_Icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 8px;
+}
+
+.dir-name {
+    font-size: 0.5em;
+    color: #fff;
+    word-break: break-all;
+    line-height: 1.2;
+}
+
+.drop-zone {
+    border: 4px dashed #00a9dd;
+    background-color: #151a2f;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+}
+
+.drop-zone.drag-over {
+    border-color: #e7fa79;
+    background-color: #1a223f;
+}
+
+.drop-zone-text {
+    font-size: 0.55em;
+    color: #00a9dd;
+    line-height: 1.5;
+}
+
+.file-icon {
+    width: 48px;
+    height: 48px;
+    background-image: url('Assets/Images/icons/File_Icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 8px;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+    align-items: center;
+}
+
+.btn-nav {
+    font-family: "PressStart2P", sans-serif;
+    font-size: 0.55em;
+    padding: 6px 12px;
+    background-color: #151a2f;
+    color: #00a9dd;
+    border: 2px solid #00a9dd;
+    cursor: pointer;
+}
+
+.btn-nav:hover {
+    border-color: #e7fa79;
+    color: #e7fa79;
 }

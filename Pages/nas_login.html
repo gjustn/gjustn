@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>NAS Login</title>
+    <script src="sign_in.js" defer></script>
+</head>
+
+<body class="Pages">
+
+    <main class="page-container">
+        
+        <section id="view-signin" class="page-view">
+            <header class="text-center">
+                <h3><u>USER LOGIN</u></h3>
+            </header>
+
+            <form class="auth-container" onsubmit="return false;">
+                <input type="text" id="nas_user" placeholder="Username..." required autocomplete="off">
+                <input type="password" id="nas_pass" placeholder="Passcode..." required>
+
+                <button type="button" id="btn_submit" class="btn-sign-in B3">
+                    Sign In
+                </button>
+            </form>
+        </section>
+
+        <section id="view-success" class="page-view-hidden">
+            <header class="text-center">
+                <h3><u>Connected</u></h3>
+            </header>
+            <p>Successful Connection!</p>
+            <div class="text-center" style="margin-top: 20px;">
+                <button type="button" id="btn_continue" class="btn-sign-in B1">
+                    Continue
+                </button>
+            </div>
+        </section>
+
+        <section id="view-explorer" class="page-view-hidden">
+            <header>
+                <h3><u>File Manager</u></h3>
+                
+                <div class="nav-bar">
+                    <button type="button" id="btn_nav_home" class="btn-nav">~ Home</button>
+                    <button type="button" id="btn_nav_up" class="btn-nav">.. Up</button>
+                    <span id="current-path" style="color: #e7fa79; font-size: 0.5em;">/</span>
+                </div>
+            </header>
+
+            <div id="dir-container" class="directory-grid"></div>
+
+            <div id="file-drop-zone" class="drop-zone">
+                <p class="drop-zone-text">OPEN DESTINATION FOLDER THEN DRAG & DROP FILES HERE TO UPLOAD</p>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="error-modal" class="modal-overlay">
+        <div class="modal-box">
+            <p id="modal-text"></p>
+            <button id="modal-close">CLOSE</button>
+        </div>
+    </div>
+
+</body>
+</html>
