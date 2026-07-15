@@ -1,5 +1,5 @@
 function loadGame_01() {
-    const gameUrl = "Unity/Game01/index.html";
+    const gameUrl = "Unity/Game01/Active/index.html";
     window.open(gameUrl, "rFrame");
 }
 
