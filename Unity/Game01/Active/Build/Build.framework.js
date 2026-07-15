@@ -12125,7 +12125,14 @@ function dbg(text) {
 
   function _glCheckFramebufferStatus(x0) { return GLctx.checkFramebufferStatus(x0) }
 
-  function _glClear(x0) { GLctx.clear(x0) }
+  function _glClear(mask) {
+          if (mask == 0x00004000) {
+              var v = GLctx.getParameter(GLctx.COLOR_WRITEMASK);
+              if (!v[0] && !v[1] && !v[2] && v[3])
+                  return;
+          }
+          GLctx.clear(mask);
+      }
 
   function _glClearBufferfi(x0, x1, x2, x3) { GLctx.clearBufferfi(x0, x1, x2, x3) }
 
