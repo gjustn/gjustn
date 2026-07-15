@@ -31,7 +31,6 @@
     
     <script src="Build/Build.loader.js"></script>
     <script>
-      // 1. Force responsive viewport settings from your previous successful build
       var meta = document.createElement('meta');
       meta.name = 'viewport';
       meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -39,18 +38,15 @@
 
       var canvas = document.querySelector("#unity-canvas");
 
-      // 2. Adjust styling dynamically if on mobile
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         canvas.style.width = "100%";
         canvas.style.height = "100%";
         canvas.style.position = "fixed";
       } else {
-        // Desktop responsive override
         canvas.style.width = "100%";
         canvas.style.height = "100%";
       }
 
-      // 3. Initialize the modern Unity instance with clean configuration
       createUnityInstance(canvas, {
         arguments: [],
         dataUrl: "Build/Build.data",
@@ -60,8 +56,8 @@
         companyName: "GuidedJunctionTechnologiesStudio",
         productName: "Parable_Shuffle_Game",
         productVersion: "0.1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        // ADDED TRANSPARENCY FLAG HERE:
+        backgroundColor: "transparent", 
       }).then((unityInstance) => {
         console.log("Unity Instance Created Successfully.");
       }).catch((message) => {
