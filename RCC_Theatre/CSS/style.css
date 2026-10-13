@@ -579,3 +579,9 @@ fieldset input[type="range"] {
         display: none;
     }
 }
+
+@media screen and (max-width) {
+    body {
+        height: 80dvh;
+    }
+}
