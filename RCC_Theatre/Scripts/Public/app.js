@@ -266,7 +266,10 @@ function initSocketConnection(profile) {
 
 try {
   const cachedUser = localStorage.getItem(window.STORAGE_KEY);
-  if (cachedUser) {
+  const activeSession = sessionStorage.getItem('rcc_active_session');
+
+  // Only auto-enter theatre if credentials exist AND it's an active session (no refresh/close)
+  if (cachedUser && activeSession) {
     const parsed = JSON.parse(cachedUser);
     if (parsed && parsed.username) {
       localUserProfile = parsed;
@@ -279,6 +282,12 @@ try {
       if (loginContainer) loginContainer.classList.add('hidden');
       if (indexContainer) indexContainer.classList.remove('hidden');
     }
+  } else {
+    // Page was refreshed, closed, or newly opened: ensure login screen shows
+    const loginContainer = document.getElementById('login');
+    const indexContainer = document.getElementById('index');
+    if (loginContainer) loginContainer.classList.remove('hidden');
+    if (indexContainer) indexContainer.classList.add('hidden');
   }
 } catch (e) {
   console.warn("Could not retrieve cached user data:", e);

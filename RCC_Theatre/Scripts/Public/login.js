@@ -175,7 +175,11 @@ function completeLogin(username, avatarData) {
     loginTime: Date.now()
   };  
 
+  // Save permanently for future visits
   localStorage.setItem(STORAGE_KEY, JSON.stringify(userProfile));
+
+  // Flag current tab session as active (dies on refresh or browser close)
+  sessionStorage.setItem('rcc_active_session', 'true');
 
   window.dispatchEvent(new CustomEvent('userAuthenticated', {
     detail: userProfile
