@@ -234,8 +234,9 @@ function saveAndSyncProfile() {
 // SOCKET INITIALIZATION
 // =========================================================================
 
-const socket = io({
-  autoConnect: false
+const socket = io('https://pi-ai-kreag.tail2c8dda.ts.net', {
+  autoConnect: false,
+  withCredentials: true
 });
 
 function initSocketConnection(profile) {

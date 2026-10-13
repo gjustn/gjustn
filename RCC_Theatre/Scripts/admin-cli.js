@@ -13,7 +13,7 @@ import { spawn } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = process.env.SERVER_URL || 'http://localhost:3000';
 const ADMIN_SECRET = process.env.ADMIN_SECRET || 'AdminPassword123!';
 
 process.stdin.setMaxListeners(0);

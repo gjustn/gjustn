@@ -491,6 +491,11 @@ io.on('connection', (socket) => {
   });
 });
 
-httpServer.listen(3000, '0.0.0.0', () => {
-  console.log('Youth Theatre server running on http://0.0.0.0:3000');
+const PORT = process.env.PORT || 3000;
+httpServer.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n\x1b[32m[SERVER RUNNING]\x1b[0m Youth Theatre server active on port ${PORT}`);
 });
+
+//httpServer.listen(3000, '0.0.0.0', () => {
+//  console.log('Youth Theatre server running on http://0.0.0.0:3000');
+//});
