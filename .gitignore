@@ -1,2 +1,7 @@
 **/node_modules/
 **/VIDEO/
+**/Remote/
+**/Scripts/admin-cli.js
+**/Scripts/package-lock.json
+**/Scripts/package.json
+**/Scripts/server.js

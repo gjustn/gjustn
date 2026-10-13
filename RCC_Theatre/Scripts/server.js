@@ -14,7 +14,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: [
+      "https://gjunction.tech",
+      "https://www.gjunction.tech",
+      "http://localhost:3000"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 app.use(express.json());
 
