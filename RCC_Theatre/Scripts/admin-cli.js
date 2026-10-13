@@ -169,7 +169,8 @@ async function showServerManagementMenu() {
         '1. Check Detailed Server & Network Status',
         '2. Start or Restart Server Process',
         '3. Stop / Shutdown Server Process',
-        '4. Back to Main Menu'
+        '4. Tailscale Funnel Management ▶',
+        '5. Back to Main Menu'
       ]
     }
   ]);
@@ -217,6 +218,9 @@ async function showServerManagementMenu() {
     }
     return showServerManagementMenu();
   } else if (serverAction.startsWith('4')) {
+    await pauseForUser();
+    return showFunnelManagementMenu();
+  } else if (serverAction.startsWith('5')) {
     return startAdminCLI();
   }
 }
