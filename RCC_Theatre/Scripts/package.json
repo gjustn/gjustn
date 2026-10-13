@@ -1,0 +1,13 @@
+{
+  "name": "rcc-theatre-boilerplate",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "inquirer": "^8.2.7",
+    "socket.io": "^4.8.3"
+  }
+}

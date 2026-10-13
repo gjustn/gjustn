@@ -185,8 +185,19 @@ body {
 }
 
 .B3 {
-    background: radial-gradient(green, black);
-    width: 25%;
+    width: 90px;
+    height: 90px;
+    background-image: url('Assets/Images/Button_002_Waxed.png');
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
 }
 
 .Show {

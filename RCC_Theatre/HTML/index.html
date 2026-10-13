@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCC Youth Theatre</title>
+    <link rel="icon" type="image/png" href="../IMAGES/icon.png">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <header>
+        <h1>RCC Youth Theatre</h1>
+    </header>
+
+    <!-- Login View (Visible by Default) -->
+    <div id="login" class="center-page">
+        <div class="card-container">
+            <header class="login-header">
+                <h2>Welcome</h2>
+            </header>
+
+            <!-- Error Banner Container -->
+            <div id="error-message" class="error-banner hidden" role="alert"></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        maxlength="12" 
+                        placeholder="Max 12 characters"
+                        autocomplete="username"
+                        required 
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="pin">6-Digit PIN</label>
+                    <input 
+                        type="password" 
+                        id="pin" 
+                        name="pin" 
+                        maxlength="6" 
+                        pattern="\d{6}" 
+                        inputmode="numeric" 
+                        placeholder="Strictly 6 digits" 
+                        autocomplete="current-password"
+                        required 
+                    />
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" id="login-btn" class="btn-primary">Login</button>
+                    <button type="button" id="create-btn" class="btn-secondary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Avatar Creator View (Hidden by Default) -->
+    <div id="avatar-creator" class="hidden">
+        <h2 style="margin-top: 45%;">Customize Avatar</h2>
+        <p>Select your avatar features and options</p>
+
+        <!-- Skin Color Palette -->
+        <fieldset>
+            <legend>Skin</legend>
+            <div class="form-group">
+                <span class="label-text">Skin Color</span>
+                <div id="skin-palette" class="palette-container"></div>
+            </div>
+        </fieldset>
+
+        <!-- Head > Hair -->
+        <fieldset>
+            <legend>Head &gt; Hair</legend>
+            <div class="form-group">
+                <label for="hair-style">Style</label>
+                <select id="hair-style">
+                    <option value="Bald" selected>Bald</option>
+                    <option value="Short">Short</option>
+                    <option value="Spiky">Spiky</option>
+                    <option value="Bob">Bob</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="label-text">Color</span>
+                <div id="hairColorPalette" class="palette-container"></div>
+            </div>
+        </fieldset>
+
+        <!-- Head > Face -->
+        <fieldset>
+            <legend>Head &gt; Face</legend>
+            <div class="form-group">
+                <label for="emote-preset">Emote Preset</label>
+                <select id="emote-preset">
+                    <option value="Blank face" selected>Blank face</option>
+                    <option value="Smile">Smile</option>
+                    <option value="Frown">Frown</option>
+                    <option value="Surprised">Surprised</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Head > Eyes -->
+        <fieldset>
+            <legend>Head &gt; Eyes</legend>
+            <div class="form-group">
+                <label for="eye-style">Style</label>
+                <select id="eye-style">
+                    <option value="Opened Eyed" selected>Opened Eyed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="label-text">Color</span>
+                <div id="eyeColorPalette" class="palette-container"></div>
+            </div>
+        </fieldset>
+
+        <!-- Head > Eyebrows -->
+        <fieldset>
+            <legend>Head &gt; Eyebrows</legend>
+            <div class="form-group">
+                <span class="label-text">Color</span>
+                <div id="eyebrowColorPalette" class="palette-container"></div>
+            </div>
+            <div class="form-group">
+                <label for="eyebrow-shape">Shape</label>
+                <select id="eyebrow-shape">
+                    <option value="Rectangles" selected>Rectangles</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eyebrow-thickness">Thickness</label>
+                <input type="range" id="eyebrow-thickness" min="1" max="5" value="2">
+            </div>
+        </fieldset>
+
+        <button type="button" id="save-avatar-btn">Enter Theatre</button>
+    </div>
+
+    <!-- Main Theatre Interface (Hidden Until Authentication) -->
+    <div id="index" class="hidden">
+        <!-- Start Overlay Modal for Mobile Autoplay Policy Unlock -->
+        <div id="start-overlay">
+            <h2>Welcome to Youth Theatre</h2>
+            <button id="start-btn" type="button" class="start-btn">
+                Tap to Join & Enable Audio
+            </button>
+        </div>
+
+        <main>
+            <div id="stage-container">
+                <!-- Border Frame & Embedded Video Screen Overlay Zone -->
+                <div id="border-frame">
+                    <div id="theatre-screen">
+                        <video id="theatre-video" playsinline></video>
+                    </div>
+                </div>
+
+                <!-- Stage Platform (Separator between Screen and Player Area) -->
+                <div id="stage-platform"></div>
+
+                <!-- PixiJS Canvas Layer -->
+                <canvas id="pixi-canvas"></canvas>
+
+                <div id="touch-dpad">
+                    <button id="dpad-up" class="dpad-btn" type="button">▲</button>
+                    <div class="dpad-row">
+                        <button id="dpad-left" class="dpad-btn" type="button">◄</button>
+                        <button id="dpad-right" class="dpad-btn" type="button">►</button>
+                    </div>
+                    <button id="dpad-down" class="dpad-btn" type="button">▼</button>
+                </div>
+                
+                <!-- UI & Controls Overlay -->
+                <div id="chat-container">
+                    <div id="chat-wrapper" class="collapsed">
+                        <button id="chat-toggle-btn" type="button">
+                            <span id="chat-toggle-title">CHAT</span>
+                            <span id="chat-toggle-icon">▲</span>
+                        </button>
+                        <div id="chat-box"></div>
+                    </div>
+                    <!-- Always Visible Text Input Form -->
+                    <form id="chat-form" action="javascript:void(0);">
+                        <input 
+                            type="text" 
+                            id="chat-input" 
+                            placeholder="Say something... (Use /w [id] for whisper)" 
+                            enterkeyhint="send"
+                            autocomplete="off"
+                        />
+                    </form>
+                </div>
+                <div id="action-container">
+                    <div id="action-bar">
+                        <label for="equip-select">Equip item:</label>
+                        <select id="equip-select" aria-label="Equip item">
+                            <option value="None">Equip: None</option>
+                            <option value="Veggi_Bucket">Equip: Veggi Bucket</option>
+                            <option value="Popcorn_Bucket">Equip: Popcorn Bucket</option>
+                            <option value="GlowStick">Equip: GlowStick</option>
+                            <option value="Sparkler">Equip: Sparkler</option>
+                            <option value="Rose_Bouquet">Equip: Rose Bouquet</option>
+                        </select>
+                        <button type="button" id="btn-action-primary">Action 1</button>
+                        <button type="button" id="btn-action-secondary">Action 2</button>
+                    </div>
+                </div>
+                <div id="unmute-banner" class="hidden">
+                    <p>Tap anywhere to unmute audio</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Footer & Scripts -->
+    <footer></footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../Scripts/Public/pixi.min.js"></script>
+    <script type="module" src="../Scripts/Public/login.js"></script>
+    <script type="module" src="../Scripts/Public/app.js"></script>
+    
+</body>
+</html>
