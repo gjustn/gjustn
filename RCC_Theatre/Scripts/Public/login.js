@@ -14,6 +14,24 @@ const STORAGE_KEY = "rcc_theatre_user";
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   bindLoginEvents();
+
+  // Check for cached user credentials on startup
+  const cachedUser = localStorage.getItem(STORAGE_KEY);
+  if (cachedUser) {
+    try {
+      const parsedUser = JSON.parse(cachedUser);
+      if (parsedUser && parsedUser.username) {
+        // Pre-fill fields if they exist
+        const usernameInput = document.getElementById('username');
+        if (usernameInput) usernameInput.value = parsedUser.username;
+
+        // Optional: Auto-login returning users if pin/profile is present
+        console.log(`[Cache Found]: Restoring session for ${parsedUser.username}`);
+      }
+    } catch (e) {
+      console.warn("Failed to load cached user profile:", e);
+    }
+  }
 });
 
 function bindLoginEvents() {

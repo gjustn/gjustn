@@ -11,6 +11,16 @@ import {
   renderColorPalette
 } from './avatar.js';
 
+// ========================================================================
+// Debugger
+// ========================================================================
+const originalRemoveItem = localStorage.removeItem;
+localStorage.removeItem = function(key) {
+  console.trace(`%c[DEBUG] removeItem called for key: ${key}`, "color: red; font-weight: bold;");
+  originalRemoveItem.apply(this, arguments);
+};
+
+
 // =========================================================================
 // GLOBAL STATE & STORAGE SETUP
 // =========================================================================
@@ -262,6 +272,12 @@ try {
       localUserProfile = parsed;
       initSocketConnection(localUserProfile);
       initAvatarCustomizationUI();
+
+      // Hide login and show theatre container directly
+      const loginContainer = document.getElementById('login');
+      const indexContainer = document.getElementById('index');
+      if (loginContainer) loginContainer.classList.add('hidden');
+      if (indexContainer) indexContainer.classList.remove('hidden');
     }
   }
 } catch (e) {
@@ -855,9 +871,9 @@ socket.on('disconnect', (reason) => {
   console.warn(`[Socket Disconnected]: ${reason}`);
 
   localUserProfile = null;
-  try {
-    localStorage.removeItem(window.STORAGE_KEY);
-  } catch (e) {}
+  //try {
+  //    localStorage.removeItem(window.STORAGE_KEY);
+  //} catch (e) {}
 
   const loginContainer = document.getElementById('login');
   const avatarCreatorView = document.getElementById('avatar-creator');
