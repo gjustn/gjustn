@@ -8,7 +8,7 @@ import inquirer from 'inquirer';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { spawn } from 'child_process';
+import { execSync, spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -86,6 +86,38 @@ function spawnNewServerProcess() {
     stdio: 'ignore'
   });
   serverProcess.unref();
+}
+
+// Check if Tailscale Funnel is currently active
+function checkFunnelStatus() {
+  try {
+    const result = execSync('tailscale funnel status', { encoding: 'utf8' });
+    return { active: true, output: result.trim() };
+  } catch (err) {
+    return { active: false, output: err.message };
+  }
+}
+
+// Start Tailscale Funnel on port 3000 in the background
+function startFunnelProcess() {
+  try {
+    // Uses sudo; ensure your user has NOPASSWD configured for tailscale if prompted, 
+    // or run the CLI with sudo node admin-cli.js
+    execSync('sudo tailscale funnel --bg 3000', { stdio: 'inherit' });
+    return { success: true, message: 'Tailscale Funnel started successfully.' };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+}
+
+// Stop Tailscale Funnel
+function stopFunnelProcess() {
+  try {
+    execSync('sudo tailscale funnel off', { stdio: 'inherit' });
+    return { success: true, message: 'Tailscale Funnel turned off.' };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
 }
 
 // =========================================================================
@@ -186,6 +218,53 @@ async function showServerManagementMenu() {
     return showServerManagementMenu();
   } else if (serverAction.startsWith('4')) {
     return startAdminCLI();
+  }
+}
+
+async function showFunnelManagementMenu() {
+  console.clear();
+  console.log('\x1b[36m===================================================\x1b[0m');
+  console.log('\x1b[1m           TAILSCALE FUNNEL MANAGEMENT             \x1b[0m');
+  console.log('\x1b[36m===================================================\x1b[0m\n');
+
+  const status = checkFunnelStatus();
+  console.log(`Funnel State: ${status.active ? '\x1b[32mACTIVE\x1b[0m' : '\x1b[31mOFFLINE\x1b[0m'}\n`);
+
+  const { funnelAction } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'funnelAction',
+      message: 'Select Funnel Option:',
+      choices: [
+        '1. Check Funnel Status Details',
+        '2. Start / Turn On Funnel (Port 3000)',
+        '3. Stop / Turn Off Funnel',
+        '4. ◀ Back to Server Management'
+      ]
+    }
+  ]);
+
+  if (funnelAction.startsWith('1')) {
+    console.clear();
+    console.log('\x1b[36m--- FUNNEL STATUS ---\x1b[0m\n');
+    console.log(status.output || 'No active funnel configuration found.');
+    console.log('');
+    await pauseForUser();
+    return showFunnelManagementMenu();
+  } else if (funnelAction.startsWith('2')) {
+    console.log('\n\x1b[33mStarting Tailscale Funnel...\x1b[0m');
+    const res = startFunnelProcess();
+    console.log(`\n\x1b[32m${res.message || res.error}\x1b[0m\n`);
+    await pauseForUser();
+    return showFunnelManagementMenu();
+  } else if (funnelAction.startsWith('3')) {
+    console.log('\n\x1b[33mStopping Tailscale Funnel...\x1b[0m');
+    const res = stopFunnelProcess();
+    console.log(`\n\x1b[32m${res.message || res.error}\x1b[0m\n`);
+    await pauseForUser();
+    return showFunnelManagementMenu();
+  } else if (funnelAction.startsWith('4')) {
+    return showServerManagementMenu();
   }
 }
 
