@@ -228,7 +228,8 @@ function saveAndSyncProfile() {
       const existingData = localStorage.getItem(window.STORAGE_KEY);
       if (existingData) {
         const parsedExisting = JSON.parse(existingData);
-        if (parsedExisting && parsedExisting.pin && !localUserProfile.pin) {
+        // Always grab the PIN from storage if it exists there
+        if (parsedExisting && parsedExisting.pin) {
           localUserProfile.pin = parsedExisting.pin;
         }
       }
@@ -236,7 +237,7 @@ function saveAndSyncProfile() {
       console.warn("Could not preserve PIN during sync:", e);
     }
 
-    localStorage.setItem(window.STORAGE_KEY, JSON.stringify(localUserProfile));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(localUserProfile));
   }
 
   if (socket && socket.connected) {
