@@ -563,8 +563,12 @@ fieldset input[type="range"] {
     }
 }
 
-@media screen and (max-width) {
-    #avatar-creator h2 {
-        margin-top: 30%;
+.avatar-creator-h2 {
+    margin-top: 40dvh;
+}
+
+@media screen and (max-width: 768px) {
+    .avatar-creator-h2 {
+        margin-top: 70dvh;
     }
 }
