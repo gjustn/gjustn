@@ -310,7 +310,6 @@ window.addEventListener('userAuthenticated', (e) => {
   const profile = e.detail?.userProfile || e.detail;
 
   if (profile && profile.username) {
-    // Preserve the PIN from the incoming profile event or fallback to existing storage
     let userPin = profile.pin;
     if (!userPin && window.STORAGE_KEY) {
       try {
@@ -342,6 +341,7 @@ window.addEventListener('userAuthenticated', (e) => {
     } else {
       socket.emit('updateProfile', { 
         username: localUserProfile.username,
+        pin: localUserProfile.pin,
         avatar: localUserProfile.avatar,
         color: localUserProfile.avatar.skinColor || localUserProfile.avatar.color || '#3498db'
       });
