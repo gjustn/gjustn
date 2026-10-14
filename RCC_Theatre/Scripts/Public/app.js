@@ -43,6 +43,7 @@ function initAvatarCustomizationUI() {
   if (!localUserProfile) {
     localUserProfile = {
       username: 'Guest',
+      pin: '000000',
       avatar: {
         skinColor: PALETTES?.skin?.[0] || '#ffdbac',
         hairColor: PALETTES?.hair?.[0] || '#090806',
@@ -202,47 +203,37 @@ function bindAvatarControlListeners() {
       }
     });
   }
-
-  // Handle Save / Enter Theatre Button Transition
-  //const saveAvatarBtn = document.getElementById('save-avatar-btn');
-  //if (saveAvatarBtn) {
-  //  saveAvatarBtn.addEventListener('click', () => {
-  //    saveAndSyncProfile();
-
-  //    const avatarCreatorView = document.getElementById('avatar-creator');
-  //    const indexContainer = document.getElementById('index');
-
-  //    if (avatarCreatorView) avatarCreatorView.classList.add('hidden');
-  //    if (indexContainer) indexContainer.classList.remove('hidden');
-
-  //    resizeGame();
-  //  });
-  //}
 }
 
 function saveAndSyncProfile() {
   if (!localUserProfile) return;
 
-  if (window.STORAGE_KEY) {
+  if (!localUserProfile.pin && window.STORAGE_KEY) {
     try {
       const existingData = localStorage.getItem(window.STORAGE_KEY);
       if (existingData) {
         const parsedExisting = JSON.parse(existingData);
-        // Always grab the PIN from storage if it exists there
         if (parsedExisting && parsedExisting.pin) {
           localUserProfile.pin = parsedExisting.pin;
         }
       }
     } catch (e) {
-      console.warn("Could not preserve PIN during sync:", e);
+      console.warn("Could not retrieve PIN during sync:", e);
     }
+  }
 
+  if (!localUserProfile.pin) {
+    localUserProfile.pin = '000000';
+  }
+
+  if (window.STORAGE_KEY) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(localUserProfile));
   }
 
   if (socket && socket.connected) {
     socket.emit('updateProfile', {
       username: localUserProfile.username,
+      pin: localUserProfile.pin,
       avatar: localUserProfile.avatar,
       color: localUserProfile.avatar.skinColor || localUserProfile.avatar.color || '#3498db'
     });
@@ -281,7 +272,6 @@ try {
   const cachedUser = localStorage.getItem(window.STORAGE_KEY);
   const activeSession = sessionStorage.getItem('rcc_active_session');
 
-  // Only auto-enter theatre if credentials exist AND it's an active session (no refresh/close)
   if (cachedUser && activeSession) {
     const parsed = JSON.parse(cachedUser);
     if (parsed && parsed.username) {
