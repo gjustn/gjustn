@@ -9,24 +9,46 @@ const MOCK_USERS = [
 
 const STORAGE_KEY = "rcc_theatre_user";
 
+// Load any previously cached custom user profile into the mock pool on startup
+try {
+  const cachedUserJson = localStorage.getItem(STORAGE_KEY);
+  if (cachedUserJson) {
+    const cachedUser = JSON.parse(cachedUserJson);
+    if (cachedUser && cachedUser.username && cachedUser.pin) {
+      const exists = MOCK_USERS.some(u => u.username.toLowerCase() === cachedUser.username.toLowerCase());
+      if (!exists) {
+        MOCK_USERS.push({
+          username: cachedUser.username,
+          pin: cachedUser.pin,
+          skinColor: cachedUser.avatar?.skinColor || '#f1c27d',
+          avatar: cachedUser.avatar
+        });
+      }
+    }
+  }
+} catch (e) {
+  console.warn("Could not load cached user into mock pool:", e);
+}
+
 // =========================================================================
 // INITIALIZATION & EVENT BINDINGS
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   bindLoginEvents();
 
-  // Check for cached user credentials on startup
+  // Check for cached user credentials on startup and pre-fill fields
   const cachedUser = localStorage.getItem(STORAGE_KEY);
   if (cachedUser) {
     try {
       const parsedUser = JSON.parse(cachedUser);
       if (parsedUser && parsedUser.username) {
-        // Pre-fill fields if they exist
         const usernameInput = document.getElementById('username');
+        const pinInput = document.getElementById('pin');
+        
         if (usernameInput) usernameInput.value = parsedUser.username;
+        if (pinInput && parsedUser.pin) pinInput.value = parsedUser.pin;
 
-        // Optional: Auto-login returning users if pin/profile is present
-        console.log(`[Cache Found]: Restoring session for ${parsedUser.username}`);
+        console.log(`[Cache Found]: Restoring credentials for ${parsedUser.username}`);
       }
     } catch (e) {
       console.warn("Failed to load cached user profile:", e);
@@ -72,7 +94,7 @@ function bindLoginEvents() {
       );
 
       if (foundUser && foundUser.pin === enteredPin) {
-        completeLogin(foundUser.username, {
+        completeLogin(foundUser.username, foundUser.pin, foundUser.avatar || {
           skinColor: foundUser.skinColor || '#f1c27d',
           hairStyle: 'Bald',
           hairColor: '#2c1b18',
@@ -105,9 +127,10 @@ function bindLoginEvents() {
       if (loginView) loginView.classList.add('hidden');
       if (avatarCreatorView) avatarCreatorView.classList.remove('hidden');
 
-      // Initialize global localUserProfile baseline
+      // Initialize global localUserProfile baseline including PIN
       window.localUserProfile = {
         username: uInput.value.trim() || 'Guest',
+        pin: pInput.value.trim() || '000000',
         avatar: {
           skinColor: '#ffdbac',
           hairStyle: 'Bald',
@@ -133,6 +156,7 @@ function bindLoginEvents() {
   if (saveAvatarBtn) {
     saveAvatarBtn.addEventListener('click', () => {
       const username = usernameInput ? usernameInput.value.trim() : 'Guest';
+      const pin = pinInput ? pinInput.value.trim() : (window.localUserProfile?.pin || '000000');
 
       // Read current selections from localUserProfile or active elements
       const currentAvatar = (typeof localUserProfile !== 'undefined' && localUserProfile.avatar) 
@@ -151,7 +175,7 @@ function bindLoginEvents() {
         eyebrowThickness: document.getElementById('eyebrow-thickness')?.value || 2
       };
 
-      completeLogin(username, avatarData);
+      completeLogin(username, pin, avatarData);
     });
   }
 }
@@ -160,7 +184,7 @@ function bindLoginEvents() {
 // UI HELPERS & STATE TRANSITIONS
 // =========================================================================
 
-function completeLogin(username, avatarData) {
+function completeLogin(username, pin, avatarData) {
   const loginContainer = document.getElementById('login');
   const avatarCreatorView = document.getElementById('avatar-creator');
   const indexContainer = document.getElementById('index');
@@ -171,11 +195,12 @@ function completeLogin(username, avatarData) {
 
   const userProfile = { 
     username, 
+    pin, 
     avatar: avatarData,
     loginTime: Date.now()
   };  
 
-  // Save permanently for future visits
+  // Save profile and PIN permanently for future visits
   localStorage.setItem(STORAGE_KEY, JSON.stringify(userProfile));
 
   // Flag current tab session as active (dies on refresh or browser close)
