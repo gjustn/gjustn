@@ -310,8 +310,23 @@ window.addEventListener('userAuthenticated', (e) => {
   const profile = e.detail?.userProfile || e.detail;
 
   if (profile && profile.username) {
+    // Preserve the PIN from the incoming profile event or fallback to existing storage
+    let userPin = profile.pin;
+    if (!userPin && window.STORAGE_KEY) {
+      try {
+        const existingData = localStorage.getItem(window.STORAGE_KEY);
+        if (existingData) {
+          const parsed = JSON.parse(existingData);
+          if (parsed && parsed.pin) userPin = parsed.pin;
+        }
+      } catch (err) {
+        console.warn("Could not retrieve PIN during authentication event:", err);
+      }
+    }
+
     localUserProfile = {
       username: profile.username,
+      pin: userPin || '000000',
       avatar: typeof profile.avatar === 'object' ? profile.avatar : { ...profile },
       loginTime: profile.loginTime || Date.now()
     };
