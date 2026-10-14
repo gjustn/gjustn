@@ -26,7 +26,6 @@ header h1 {
     letter-spacing: 1px;
 }
 
-/* Scalable Main Container with Aspect Ratio Guard */
 #stage-container {
     position: relative;
     width: 100vw;
@@ -40,7 +39,6 @@ header h1 {
     touch-action: none;
 }
 
-/* Responsive Theatre Frame & Screen Overlay */
 #border-frame {
     position: absolute;
     top: 1.6%;
@@ -72,7 +70,6 @@ header h1 {
     object-fit: contain;
 }
 
-/* Responsive Stage Platform */
 #stage-platform {
     position: absolute;
     top: 45.8%;
@@ -87,7 +84,6 @@ header h1 {
     box-sizing: border-box;
 }
 
-/* Canvas Overlay */
 #pixi-canvas {
     position: absolute;
     top: 0;
@@ -99,12 +95,11 @@ header h1 {
 }
 
 #pixi-canvas, #stage-container {
-  touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-/* UI Overlay Panels */
 #chat-container {
     position: absolute;
     bottom: 10px;
@@ -199,7 +194,6 @@ header h1 {
     box-sizing: border-box;
 }
 
-/* Subtle styling for Chat Log Metadata */
 .chat-entry {
     margin-bottom: 3px;
     line-height: 1.3;
@@ -302,55 +296,52 @@ header h1 {
 }
 
 #start-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    color: #ffffff;
 }
 
 #start-overlay h2 {
-  margin-bottom: 15px;
-  font-family: inherit;
+    margin-bottom: 15px;
+    font-family: inherit;
 }
 
 .start-btn {
-  padding: 15px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #e74c3c;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .start-btn:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 .start-btn:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
-/* Centered Layout Utility */
 .center-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80dvh;
-    /*background: #0d0d11;*/
 }
 
-/* Card Wrapper */
 .card-container {
     width: 100%;
     max-width: 360px;
@@ -378,7 +369,6 @@ header h1 {
     margin-bottom: 18px;
 }
 
-/* Fieldsets & Grouping */
 fieldset {
     border: 1px solid #ffffff;
     border-radius: 4px;
@@ -407,7 +397,6 @@ legend {
     margin-bottom: 0;
 }
 
-/* Form Controls */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -452,7 +441,6 @@ fieldset input[type="range"] {
     border-color: #5c4b75;
 }
 
-/* Button Layout */
 .button-group {
     display: flex;
     gap: 10px;
@@ -496,7 +484,6 @@ fieldset input[type="range"] {
     margin-top: 15px;
 }
 
-/* Swatch Containers & Circles */
 .palette-container, 
 .color-palette, 
 .color-swatch-group {
@@ -529,7 +516,6 @@ fieldset input[type="range"] {
     transform: scale(1.15);
 }
 
-/* Enter Theatre Button */
 #enter-theatre-btn {
     width: auto;
     padding: 6px 14px;
@@ -546,7 +532,6 @@ fieldset input[type="range"] {
     background-color: #e5e5e5;
 }
 
-/* Error Message Banner */
 .error-banner {
     background: rgba(217, 83, 79, 0.2);
     border: 1px solid #d9534f;
@@ -562,7 +547,6 @@ fieldset input[type="range"] {
     display: none;
 }
 
-/* Shake Animation for Input Error Feedback */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-5px); }
@@ -573,7 +557,6 @@ fieldset input[type="range"] {
     animation: shake 0.4s ease-in-out;
 }
 
-/* Hide D-Pad on desktop unless touch is supported */
 @media (pointer: fine) {
     #touch-dpad {
         display: none;
@@ -581,7 +564,7 @@ fieldset input[type="range"] {
 }
 
 @media screen and (max-width) {
-    body {
-        height: 80dvh;
+    #avatar-creator h2 {
+        margin-top: 30%;
     }
 }
