@@ -30,7 +30,7 @@ header h1 {
     height: calc(100dvh - 45px);
     max-width: 1000px;
     max-height: 750px;
-    background: #18151e;
+    /*background: #18151e;*/
     border: 2px solid #2a2438;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
     overflow: hidden;
